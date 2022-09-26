@@ -1,8 +1,31 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
+﻿
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h2 class="display-4">Welcome</h2>
+    <h1>ECommerce App</h1>
+    @*<div>
+                <h2><a class="nav-link text-dark btn-primary font-weight-bold" style="position: unset; margin: 12px; background-color: lightgrey;  " asp-controller="Admin" asp-action="AdminPage">Admin</a></h2>
+                <h2><a class="nav-link text-dark btn-primary font-weight-bold" style="position: unset; margin: 12px; background-color: lightgrey;  " asp-controller="Customer" asp-action="CustomerPage">Customer</a></h2>
+
+            </div>
+        </div>*@
+
+    <div>
+
+        <button id="myAdminButton" class="nav-link text-dark btn-primary font-weight-bold" style="position: unset; margin: 12px; background-color: lightgrey;">Admin</button>
+        <script type="text/javascript">
+        document.getElementById("myAdminButton").onclick = function () {
+            location.href = "https://omsvalidatelogin20220420085103.azurewebsites.net/api/validatelogin?Users=Admin";
+        };</script>
+        <button id="myEmployeeButton" class="nav-link text-dark btn-primary font-weight-bold" style="position: unset; margin: 12px; background-color: lightgrey;">Customer</button>
+        <script type="text/javascript">
+        document.getElementById("myEmployeeButton").onclick = function () {
+            location.href = "https://omsvalidatelogin20220420085103.azurewebsites.net/api/validatelogin?Users=Customer";
+        };</script>
+        <div>
+            <a asp-controller="Upload" asp-action="UploadFile" class="btn btn-danger mx-3">
+                <i class="far fa-trash-alt"></i> Upload
+            </a>
+        </div>
+
+    </div>
 </div>

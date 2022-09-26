@@ -1,0 +1,61 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model ECommerceApp.Models.Product
+
+@{
+    ViewData["Title"] = "Add Product Details";
+}
+
+<form method="post" asp-controller="Customer" asp-action="AddProduct">
+    <div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="ProductsId"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="ProductsId" class="form-control" />
+                        <span asp-validation-for="ProductsId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="ModelName"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="ModelName" class="form-control" />
+                        <span asp-validation-for="ModelName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="CategoryId"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="CategoryId" class="form-control" />
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+
+                    <div class="col-4 offset-4">
+                        <input type="submit" class="btn btn-info w-100" value="Add" />
+                    </div>
+                    @if (ViewBag.Message != null)
+                    {
+                        <a class="nav-link text-black-50 btn-outline-primary font-weight-bolder" style="position: relative; margin:10px;background-color: beige;float: right" asp-controller="Customer" asp-action="ProductDetailsList">Get Product Details </a>
+                        <script type="text/javascript">
+                                      window.onload=function(){
+                                          alert("@ViewBag.Message");
+                                      };
+                        </script>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
