@@ -31,6 +31,7 @@ namespace ECommerceApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
 
             services.AddControllers();
             services.AddDbContext<EcommerceDBContext>(item => item.UseSqlServer(Configuration.GetConnectionString("DBConn")));
@@ -54,6 +55,7 @@ namespace ECommerceApp
             }
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
             app.UseRouting();
 
@@ -61,8 +63,10 @@ namespace ECommerceApp
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
-            });
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+        });
         }
     }
 }
